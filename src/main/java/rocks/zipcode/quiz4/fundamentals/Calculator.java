@@ -1,10 +1,13 @@
 package rocks.zipcode.quiz4.fundamentals;
 
+import java.util.function.BinaryOperator;
+
 /**
  * @author leon on 21/12/2018.
  */
 public class Calculator {
-    public static Double squareRoot(Double value) {
+    public static Double squareRoot(Double value)
+    {
         return Math.sqrt(value);
     }
 
@@ -37,16 +40,22 @@ public class Calculator {
         return results;
     }
 
-    public static Double add(Double value1, Double value2) {
-        return value1 + value2;
+    public static Double add(Double value1, Double value2)
+    {
+        BinaryOperator<Double> add = Double::sum;
+        return add.apply(value1, value2);
     }
 
-    public static Double subtract(Double value1, Double value2) {
-        return value1 - value2;
+    public static Double subtract(Double value1, Double value2)
+    {
+        BinaryOperator<Double> sub = (a, b) -> a - b;
+        return sub.apply(value1, value2);
     }
 
 
-    public static Double divide(Double divisor, Double dividend) {
-        return divisor / dividend;
+    public static Double divide(Double divisor, Double dividend)
+    {
+        BinaryOperator<Double> div = (n, m) -> n / m;
+        return div.apply(divisor, dividend);
     }
 }

@@ -7,7 +7,8 @@ import rocks.zipcode.quiz4.objectorientation.account.BankAccount;
 
 public class RemoveBankAccountByIndexTest {
     @Test
-    public void test1() {
+    public void test1()
+    {
         // given
         Bank bank = new Bank();
         BankAccount bankAccount = new BankAccount();
