@@ -29,7 +29,7 @@ public class Food
 
         for(Spice element : spiceList)
         {
-            if(spiceCount.containsKey(element.getClass()))
+            if(!spiceCount.containsKey(element.getClass()))
             {
                 spiceCount.putIfAbsent(element.getClass(), 1);
             }
