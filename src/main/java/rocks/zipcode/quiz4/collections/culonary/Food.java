@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author leon on 27/12/2018.
@@ -24,18 +25,19 @@ public class Food
 
     public <SpiceType extends Class<? extends Spice>> Map<SpiceType, Integer> getSpiceCount()
     {
-        Map<Class<Spice>, Integer> spiceCount = new HashMap<>();
+        Map<Class<? extends Spice>, Integer> spiceCount = new HashMap<>();
 
         for(Spice element : spiceList)
         {
-//            if(!spiceCount.containsKey(element))
-//            {
-//                spiceCount.put(element, 1);
-//            }
-//            else
-//            {
-//                spiceCount.put(element, spiceCount.get(element) + 1);
-//            }
+            if(spiceCount.containsKey(element.getClass()))
+            {
+                spiceCount.putIfAbsent(element.getClass(), 1);
+            }
+            else
+            {
+                Integer currentCount = spiceCount.get(element.getClass());
+                spiceCount.put(element.getClass(), currentCount + 1);
+            }
         }
 
         return (Map<SpiceType, Integer>) spiceCount;
